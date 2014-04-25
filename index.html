@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Wireframer</title>
+	<style>
+		*{
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		body{
+			font-family: sans-serif;   
+		}
+		.container{
+			width: 80%;
+			margin: 0 auto;
+			position: relative;
+			max-width: 640px;
+		}
+		.canvasContainer, header{
+			text-align: center;
+		}
+		canvas{
+			position: relative;
+			border: 1px gray solid;
+			outline: none;
+		}
+		.controls label{
+			background: hsl(200, 100%, 90%);
+			padding: 4px 8px;
+			border-radius: 4px;
+			display: inline-block;
+			margin: 0.2em;
+		}
+		.controls input[type="number"]{
+			width: 64px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Wireframer</h1>
+			<p><strong>Click and drag to draw</strong></p>
+		</header>
+		<section class="canvasContainer">
+			<canvas id="canvas"></canvas>
+			<div class="controls">
+				<button id="btn_undo">Undo</button>
+				<button id="btn_clear">Clear</button>
+				<button id="btn_saveImage">Get image copy</button>
+				<hr>
+				<form autocomplete="off" onsubmit="return false">
+					
+					<label>Width <input id="num_width" type="number" min="2" value="320"></label>
+					<label>Height <input id="num_height" type="number" min="2" value="480"></label>
+					<label>Dots spacing <input id="num_dotSpacing" type="number" min="1" value="16"></label>
+					<br>
+					<label>Line size <input id="num_lineWidth" type="number" min="1" value="2"></label>
+					<label>Line color <input type="text" id="col_lineColor" value="hsl(0,0%,0%)"></label>
+					<br>
+					<label>Dots size <input id="num_dotSize" type="number" min="1" value="2"></label>
+					<label>Dots color <input type="text" id="col_dotColor" value="hsl(0,0%,80%)"></label>
+
+					<button style="display:none" type="submit"></button>
+				</form>
+			</div>
+		</section>
+		<h2>About this</h2>
+		<p>I've seen some designers buying posh notebooks of "dot paper". Now you can have dot paper in your browser.</p>
+		<p><em>Something something save the environment... something something cost of ink...</em></p>
+		<h3>Look mom! No plugins!</h3>
+		<p>Who am I kidding, my mom doesn't know what HTML5 or Javascript is.</p>
+		<h3>Browsers</h3>
+		<p>Should work fine in current versions of Firefox and Chrome. Has not been tested on IE, Safari, or mobile.</p>
+		<h3>Heads up</h3>
+		<p>Nothing is sanitized! So feel free to put nonsense into the input fields! Watch your Javascript console throw a fit! Crash your browser!</p>
+		<p>Perusing the Javascript? Yeah, it might look like a mess; this project wasn't designed for maintainability, because it's not a big project.</p>
+		<h3>Copyright</h3>
+		<p></p>
+	</div>
+	
+	<script src="wireframer.js"></script>
+	<script>
+		var wireframer = new Wireframer();
+		wireframer.init(document.querySelector('#canvas'));
+	</script>
+</body>
+</html>
