@@ -1,4 +1,3 @@
-// don't need jquery for this anymore, people
 var $ = function(s) {
 	return document.querySelector(s);
 };
@@ -54,6 +53,8 @@ var Wireframer = function() {
 
 		// add event listeners
 		canvas.addEventListener('mousedown', function(e) {
+			// Ignore non left-clicks
+			if (e.button !== 0) return;
 			entities.push(new Entity());
 			entities.slice(-1)[0].x = (Math.round((e.offsetX || e.layerX) / dotsSpacing) * dotsSpacing) / dotsSpacing;
 			entities.slice(-1)[0].y = (Math.round((e.offsetY || e.layerY) / dotsSpacing) * dotsSpacing) / dotsSpacing;
